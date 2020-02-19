@@ -1,5 +1,5 @@
 import argparse
-
+import re
 from turtle import *
 
 
@@ -14,6 +14,9 @@ colors = parser.parse_args().colors
 
 font_size = 24
 style = ('Arial', font_size, 'normal')
+text = [re.sub(r'[^\w\s]', '', i) for i in text]
+text = [i.casefold() for i in text]
+text = [i for i in text if i != '']
 result = {i: text.count(i) for i in text}
 speed('fastest')
 up()
